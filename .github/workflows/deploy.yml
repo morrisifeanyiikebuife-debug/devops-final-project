@@ -1,0 +1,67 @@
+name: CI/CD Deploy to EC2
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Copy files to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: '22'
+          source: |
+            docker-compose.yml
+            portfolio
+            java-folder
+          target: ${{ secrets.EC2_DEPLOY_PATH }}
+
+      - name: Run remote deploy commands
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: '22'
+          script: |
+            set -euo pipefail
+            cd ${{ secrets.EC2_DEPLOY_PATH }}
+
+            # Ensure Docker daemon is installed and running
+            if ! docker info >/dev/null 2>&1; then
+              echo "Docker daemon not available — installing/starting Docker"
+              sudo apt-get update -y
+              sudo apt-get install -y docker.io
+              sudo systemctl enable --now docker || sudo service docker start
+            fi
+
+            # Ensure docker-compose (legacy) or docker compose (plugin) is available
+            if ! command -v docker-compose >/dev/null 2>&1 && ! docker compose version >/dev/null 2>&1; then
+              echo "Installing docker-compose"
+              sudo apt-get update -y
+              sudo apt-get install -y docker-compose
+            fi
+
+            # Choose compose command depending on what's available
+            if command -v docker-compose >/dev/null 2>&1; then
+              COMPOSE_CMD="docker-compose"
+            else
+              COMPOSE_CMD="docker compose"
+            fi
+
+            SERVICES="portfolio"
+            if [ -f java-folder/Dockerfile ]; then SERVICES="java-app portfolio"; fi
+
+            $COMPOSE_CMD build $SERVICES || true
+            $COMPOSE_CMD up -d $SERVICES
+            $COMPOSE_CMD ps

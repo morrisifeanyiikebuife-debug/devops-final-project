@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morris Ikebuife | Junior Cloud Engineer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    line-height:1.6;
+}
+
+header{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+    background:
+    radial-gradient(circle at top left,#06b6d4,#0f172a 40%),
+    radial-gradient(circle at bottom right,#8b5cf6,#0f172a 40%);
+}
+
+.hero{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:10px;
+    background:linear-gradient(to right,#38bdf8,#22c55e,#f59e0b);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero h2{
+    color:#cbd5e1;
+    margin-bottom:20px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    font-size:1.1rem;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:12px 25px;
+    background:#06b6d4;
+    color:white;
+    text-decoration:none;
+    border-radius:30px;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#0891b2;
+    transform:translateY(-3px);
+}
+
+section{
+    padding:80px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    margin-bottom:50px;
+    color:#38bdf8;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#1e293b;
+    padding:25px;
+    border-radius:15px;
+    transition:0.3s;
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 30px rgba(0,0,0,.3);
+}
+
+.card h3{
+    color:#22c55e;
+    margin-bottom:10px;
+}
+
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+}
+
+.skill{
+    background:linear-gradient(135deg,#06b6d4,#8b5cf6);
+    padding:12px 20px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+.about{
+    text-align:center;
+    max-width:900px;
+    margin:auto;
+}
+
+.contact{
+    text-align:center;
+}
+
+.contact a{
+    color:#38bdf8;
+    text-decoration:none;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
+    color:#94a3b8;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="hero">
+        <h1>Morris Ikebuife</h1>
+        <h2>Junior Cloud Engineer ☁️</h2>
+
+        <p>
+            Aspiring Cloud Engineer passionate about cloud technologies,
+            Linux administration, automation, and scripting.
+            Currently building hands-on experience with cloud infrastructure,
+            system administration, and DevOps fundamentals.
+        </p>
+
+        <a href="#contact" class="btn">Let's Connect</a>
+    </div>
+</header>
+
+<section id="about">
+    <h2 class="section-title">About Me</h2>
+
+    <div class="about">
+        <p>
+            Hello! I'm Morris Ikebuife, a Junior Cloud Engineer focused on
+            learning and building practical cloud solutions. My journey includes
+            working with Linux environments, Bash scripting, and cloud
+            technologies while continuously improving my infrastructure and
+            automation skills.
+        </p>
+    </div>
+</section>
+
+<section id="skills">
+    <h2 class="section-title">Technical Skills</h2>
+
+    <div class="skills">
+        <div class="skill">Linux</div>
+        <div class="skill">Bash Scripting</div>
+        <div class="skill">Cloud Computing</div>
+        <div class="skill">Networking Basics</div>
+        <div class="skill">Git & GitHub</div>
+        <div class="skill">Troubleshooting</div>
+        <div class="skill">Automation</div>
+        <div class="skill">System Administration</div>
+    </div>
+</section>
+
+<section id="projects">
+    <h2 class="section-title">Projects</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Linux Automation Scripts</h3>
+            <p>
+                Developed Bash scripts to automate routine system tasks,
+                file checks, and administrative operations.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Cloud Learning Lab</h3>
+            <p>
+                Built personal cloud lab environments to practice cloud
+                infrastructure deployment and management.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Infrastructure Fundamentals</h3>
+            <p>
+                Hands-on experience exploring servers, networking concepts,
+                security basics, and cloud architecture principles.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="goals">
+    <h2 class="section-title">Career Goals</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Cloud Engineering</h3>
+            <p>
+                Build expertise in designing and managing scalable cloud
+                infrastructure.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>DevOps Practices</h3>
+            <p>
+                Expand skills in CI/CD pipelines, automation, and
+                infrastructure as code.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>Professional Growth</h3>
+            <p>
+                Continue learning industry best practices and earn
+                cloud certifications.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact">
+        <p>Email: your-email@example.com</p>
+        <p>LinkedIn: linkedin.com/in/yourprofile</p>
+        <p>GitHub: github.com/yourusername</p>
+        <br>
+        <p>
+            Open to internships, junior cloud engineering opportunities,
+            and collaborative technology projects.
+        </p>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Morris Ikebuife | Junior Cloud Engineer Portfolio</p>
+</footer>
+
+</body>
+</html>

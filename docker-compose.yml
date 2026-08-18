@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  portfolio:
+    build: ./portfolio
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+  # Optional Java app service. It will only be built/deployed if
+  # `java-folder/Dockerfile` exists on the server or in the repo.
+  java-app:
+    build: ./java-folder
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
