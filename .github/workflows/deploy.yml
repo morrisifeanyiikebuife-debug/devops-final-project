@@ -20,11 +20,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.EC2_PORT != '' && secrets.EC2_PORT || 22 }}
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-          source: |
-            docker-compose.yml
-            portfolio
-            java-folder
+          fingerprint: ${{ secrets.SSH_KNOWN_HOSTS }} # <-- Fixed warning
+          source: "docker-compose.yml,portfolio,java-folder" # <-- Fixed empty archive error by using comma separation
           target: ${{ secrets.EC2_DEPLOY_PATH }}
 
       - name: Run remote deploy commands
@@ -34,8 +31,8 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.EC2_PORT != '' && secrets.EC2_PORT || 22 }}
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-          script: |
+          fingerprint: ${{ secrets.SSH_KNOWN_HOSTS }} # <-- Fixed warning
+          script: | # <-- Added the missing script key
             set -euo pipefail
             cd ${{ secrets.EC2_DEPLOY_PATH }}
 
