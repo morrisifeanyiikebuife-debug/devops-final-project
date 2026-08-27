@@ -61,6 +61,6 @@ jobs:
             SERVICES="portfolio"
             if [ -f java-folder/Dockerfile ]; then SERVICES="java-app portfolio"; fi
 
-            $COMPOSE_CMD build $SERVICES || true
-            $COMPOSE_CMD up -d $SERVICES
-            $COMPOSE_CMD ps
+            sudo $COMPOSE_CMD build $SERVICES || true
+            sudo $COMPOSE_CMD up -d $SERVICES
+            sudo $COMPOSE_CMD ps
